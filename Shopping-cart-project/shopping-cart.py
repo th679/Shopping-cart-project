@@ -47,12 +47,14 @@ while True:
          break
     else:
         selected_ids.append(selected_id)
-        
+
+print("SHOPPING CART ITEM IDENTIFIERS INCLUDE: ", selected_ids)
+
 for selected_id in selected_ids:
     matching_products = [p for p in products if str(p["id"]) == str(selected_id)]
     matching_product = matching_products[0]
     running_total = running_total + matching_product["price"]
-    print("SELECTED PRODUCT: " + matching_product["name"] + " " + str(matching_product["price"]))
+    print("+ " + matching_product["name"] + " " + str(matching_product["price"]))
 
 print("THE TOTAL PRICE IS: " + str(running_total))
 
