@@ -38,14 +38,21 @@ t = datetime.datetime.now()
 
 
 print("STARTED AT: " + t.strftime("%Y-%m-%d"))
+selected_ids = []
 
 running_total = 0
 while True:
-    selected_id = input("Please input a product id: ")
-    matching_product = [p for p in products if p["id"] == selected_id]
-    product = matching_product[0]
-    price = product["price"]
-    running_total = running_total + price
+    selected_id = input("Please input a product id or DONE when finished: ")
+    if selected_id == "DONE":
+         break
+    else:
+        selected_ids.append(selected_id)
+        
+for selected_id in selected_ids:
+    matching_products = [p for p in products if str(p["id"]) == str(selected_id)]
+    matching_product = matching_products[0]
+    running_total = running_total + matching_product["price"]
+    print("SELECTED PRODUCT: " + matching_product["name"] + " " + str(matching_product["price"]))
 
 print("THE TOTAL PRICE IS: " + str(running_total))
 
