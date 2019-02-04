@@ -63,8 +63,17 @@ for selected_id in selected_ids:
     matching_product = matching_products[0]
     running_total = running_total + matching_product["price"]
     price_usd = "(${0:.2f})".format(matching_product["price"])
-    print("+ " + matching_product["name"] + " " + str(matching_product["price"]))
+    print("+ " + matching_product["name"] + " " + price_usd)
 
-print("THE TOTAL PRICE IS: " + str(running_total))
+running_total_usd = "${0:.2f}".format(running_total)
+sales_tax = running_total*.06
+sales_tax_usd = "${0:.2f}".format(sales_tax)
+total_cost = running_total + sales_tax
+total_cost_usd =  "${0:.2f}".format(total_cost)
 
+print("------------------------------")
+print("Subtotal: " + running_total_usd)
+print("Plus District of Columbia Sales Tax (6%): " + sales_tax_usd)
+print("Total: " + total_cost_usd)
+print("------------------------------")
 #calculate tax, add tax + total
