@@ -25,15 +25,6 @@ products = [
 
 # TODO: write some Python code here to produce the desired functionality...
 
-# x = 3 # x is a counter variable
-
-#while True:
-   # x = input("Please input a product id: ")
-    #print(x)
-    #x = x + 1
-
-
-
 import datetime
 
 t = datetime.datetime.now()
@@ -48,13 +39,13 @@ while True:
     else:
         selected_ids.append(selected_id)
 
-print("------------------------------")
-print("MY GROCERY STORE")
-print("------------------------------")
-print("Web: www.mygrocerystore.com")
+print("----------------------------------------")
+print("FRESH FOOD MARKET")
+print("----------------------------------------")
+print("Web: www.freshfoodmarket.com")
 print("Phone: 1.202.687.0100")
-print("Checkout Time: " + t.strftime("%Y-%m-%d"))
-print("------------------------------")
+print("Checkout Time: " + t.strftime("%Y-%m-%d %I:%M:%S %p"))
+print("----------------------------------------")
 
 print("SHOPPING CART ITEMS: ")
 
@@ -71,9 +62,9 @@ sales_tax_usd = "${0:.2f}".format(sales_tax)
 total_cost = running_total + sales_tax
 total_cost_usd =  "${0:.2f}".format(total_cost)
 
-print("------------------------------")
+print("----------------------------------------")
 print("Subtotal: " + running_total_usd)
 print("Plus District of Columbia Sales Tax (6%): " + sales_tax_usd)
 print("Total: " + total_cost_usd)
-print("------------------------------")
-#calculate tax, add tax + total
+print("----------------------------------------")
+print("Thanks for shopping at Fresh Food Market! Please come again.")
