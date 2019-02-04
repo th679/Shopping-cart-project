@@ -31,13 +31,13 @@ products = [
    # x = input("Please input a product id: ")
     #print(x)
     #x = x + 1
-    
+
+
+
 import datetime
 
 t = datetime.datetime.now()
 
-
-print("STARTED AT: " + t.strftime("%Y-%m-%d"))
 selected_ids = []
 
 running_total = 0
@@ -48,12 +48,21 @@ while True:
     else:
         selected_ids.append(selected_id)
 
-print("SHOPPING CART ITEM IDENTIFIERS INCLUDE: ", selected_ids)
+print("------------------------------")
+print("MY GROCERY STORE")
+print("------------------------------")
+print("Web: www.mygrocerystore.com")
+print("Phone: 1.202.687.0100")
+print("Checkout Time: " + t.strftime("%Y-%m-%d"))
+print("------------------------------")
+
+print("SHOPPING CART ITEMS: ")
 
 for selected_id in selected_ids:
     matching_products = [p for p in products if str(p["id"]) == str(selected_id)]
     matching_product = matching_products[0]
     running_total = running_total + matching_product["price"]
+    price_usd = "(${0:.2f})".format(matching_product["price"])
     print("+ " + matching_product["name"] + " " + str(matching_product["price"]))
 
 print("THE TOTAL PRICE IS: " + str(running_total))
