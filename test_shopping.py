@@ -1,7 +1,7 @@
 import datetime
 import pytest
 
-from shopping_cart import to_usd, human_friendly_timestamp, find_product
+from shopping_cart import to_usd, human_friendly_timestamp, find_product, calculate_subtotal, calculate_total
 
 def test_to_usd():
     assert to_usd(5) == "$5.00"
@@ -29,4 +29,19 @@ def test_find_product():
     with pytest.raises(IndexError):
         find_product(20, products)
 
+def test_calculate_subtotal():
+    products = [
+    {"id":2, "name": "All-Seasons Salt", "department": "pantry", "aisle": "spices seasonings", "price": 4.99},
+    {"id":4, "name": "Robust Golden Unsweetened Oolong Tea", "department": "beverages", "aisle": "tea", "price": 2.49},
+    {"id":3, "name": "Smart Ones Classic Favorites Mini Rigatoni With Vodka Cream Sauce", "department": "frozen", "aisle": "frozen meals", "price": 6.99}
+    ]
+    running_total = 0
+    for product in products:
+        running_total = calculate_subtotal(running_total, product["price"])
+    assert running_total == 14.47
+
+def test_calculate_total():
+    subtotal = 100
+    tax = 10
+    assert calculate_total(subtotal, tax) == 110
 
