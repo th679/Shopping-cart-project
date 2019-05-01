@@ -27,6 +27,9 @@ products = [
 
 import datetime
 
+def to_usd(price):
+    return "${0:,.2f}".format(price)
+
 t = datetime.datetime.now()
 
 selected_ids = []
@@ -53,18 +56,14 @@ for selected_id in selected_ids:
     matching_products = [p for p in products if str(p["id"]) == str(selected_id)]
     matching_product = matching_products[0]
     running_total = running_total + matching_product["price"]
-    price_usd = "(${0:.2f})".format(matching_product["price"])
-    print("+ " + matching_product["name"] + " " + price_usd)
+    print("+ " + matching_product["name"] + " " + to_usd(matching_product["price"]))
 
-running_total_usd = "${0:.2f}".format(running_total)
 sales_tax = running_total*.06
-sales_tax_usd = "${0:.2f}".format(sales_tax)
 total_cost = running_total + sales_tax
-total_cost_usd =  "${0:.2f}".format(total_cost)
 
 print("----------------------------------------")
-print("Subtotal: " + running_total_usd)
-print("Plus District of Columbia Sales Tax (6%): " + sales_tax_usd)
-print("Total: " + total_cost_usd)
+print("Subtotal: " + to_usd(running_total))
+print("Plus District of Columbia Sales Tax (6%): " + to_usd(sales_tax))
+print("Total: " + to_usd(total_cost))
 print("----------------------------------------")
 print("Thanks for shopping at Fresh Food Market! Please come again.")
