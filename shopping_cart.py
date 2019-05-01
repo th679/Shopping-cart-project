@@ -33,17 +33,25 @@ def to_usd(price):
 def human_friendly_timestamp(time):
     return time.strftime("%Y-%m-%d %I:%M:%S %p")
 
+def find_product(id, products):
+    matching_products = [p for p in products if str(p["id"]) == str(id)]
+    matching_product = matching_products[0]
+    return matching_product
+
 t = datetime.datetime.now()
 
 selected_ids = []
 
 running_total = 0
+
 while True:
     selected_id = input("Please input a product id or DONE when finished: ")
     if selected_id == "DONE":
          break
     else:
         selected_ids.append(selected_id)
+
+
 
 print("----------------------------------------")
 print("FRESH FOOD MARKET")
@@ -56,8 +64,7 @@ print("----------------------------------------")
 print("SHOPPING CART ITEMS: ")
 
 for selected_id in selected_ids:
-    matching_products = [p for p in products if str(p["id"]) == str(selected_id)]
-    matching_product = matching_products[0]
+    matching_product = find_product(selected_id, products)
     running_total = running_total + matching_product["price"]
     print("+ " + matching_product["name"] + " " + to_usd(matching_product["price"]))
 
