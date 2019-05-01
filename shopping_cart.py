@@ -30,6 +30,9 @@ import datetime
 def to_usd(price):
     return "${0:,.2f}".format(price)
 
+def human_friendly_timestamp(time):
+    return time.strftime("%Y-%m-%d %I:%M:%S %p")
+
 t = datetime.datetime.now()
 
 selected_ids = []
@@ -47,7 +50,7 @@ print("FRESH FOOD MARKET")
 print("----------------------------------------")
 print("Web: www.freshfoodmarket.com")
 print("Phone: 1.202.687.0100")
-print("Checkout Time: " + t.strftime("%Y-%m-%d %I:%M:%S %p"))
+print("Checkout Time: " + human_friendly_timestamp(t))
 print("----------------------------------------")
 
 print("SHOPPING CART ITEMS: ")
