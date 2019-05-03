@@ -47,40 +47,43 @@ def calculate_total(subtotal, tax):
     total_cost = subtotal + tax
     return total_cost
 
-t = datetime.datetime.now()
 
-selected_ids = []
+if __name__ == "__main__":
 
-while True:
-    selected_id = input("Please input a product id or DONE when finished: ")
-    if selected_id == "DONE":
-         break
-    else:
-        selected_ids.append(selected_id)
+    t = datetime.datetime.now()
 
-running_total = 0
+    selected_ids = []
 
-print("----------------------------------------")
-print("FRESH FOOD MARKET")
-print("----------------------------------------")
-print("Web: www.freshfoodmarket.com")
-print("Phone: 1.202.687.0100")
-print("Checkout Time: " + human_friendly_timestamp(t))
-print("----------------------------------------")
+    while True:
+        selected_id = input("Please input a product id or DONE when finished: ")
+        if selected_id == "DONE":
+            break
+        else:
+            selected_ids.append(selected_id)
 
-print("SHOPPING CART ITEMS: ")
+    running_total = 0
 
-for selected_id in selected_ids:
-    matching_product = find_product(selected_id, products)
-    running_total = calculate_subtotal(running_total, matching_product["price"])
-    print("+ " + matching_product["name"] + " " + to_usd(matching_product["price"]))
+    print("----------------------------------------")
+    print("FRESH FOOD MARKET")
+    print("----------------------------------------")
+    print("Web: www.freshfoodmarket.com")
+    print("Phone: 1.202.687.0100")
+    print("Checkout Time: " + human_friendly_timestamp(t))
+    print("----------------------------------------")
 
-sales_tax = running_total*.06
-total_cost = calculate_total(running_total, sales_tax)
+    print("SHOPPING CART ITEMS: ")
 
-print("----------------------------------------")
-print("Subtotal: " + to_usd(running_total))
-print("Plus District of Columbia Sales Tax (6%): " + to_usd(sales_tax))
-print("Total: " + to_usd(total_cost))
-print("----------------------------------------")
-print("Thanks for shopping at Fresh Food Market! Please come again.")
+    for selected_id in selected_ids:
+        matching_product = find_product(selected_id, products)
+        running_total = calculate_subtotal(running_total, matching_product["price"])
+        print("+ " + matching_product["name"] + " " + to_usd(matching_product["price"]))
+
+    sales_tax = running_total*.06
+    total_cost = calculate_total(running_total, sales_tax)
+
+    print("----------------------------------------")
+    print("Subtotal: " + to_usd(running_total))
+    print("Plus District of Columbia Sales Tax (6%): " + to_usd(sales_tax))
+    print("Total: " + to_usd(total_cost))
+    print("----------------------------------------")
+    print("Thanks for shopping at Fresh Food Market! Please come again.")
